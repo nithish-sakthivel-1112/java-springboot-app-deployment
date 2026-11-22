@@ -26,5 +26,16 @@ stages {
 
         }
     }
+    stage('Build Docker Image & Push to Docker Hub'){
+        environment {
+            DOCKER_USERNAME = credentials('DOCKER_USERNAME')
+            DOCKER_TOKEN = credentials('DOCKER_TOKEN')
+        }
+        steps{
+            sh 'cd task-manager-spring-boot/ && docker build -t task-manager-spring-boot:latest .'
+            sh 'cd task-manager-spring-boot/ && docker login -u $DOCKER_USERNAME -p $DOCKER_TOKEN'
+            sh 'cd task-manager-spring-boot/ && docker push task-manager-spring-boot:latest'
+        }
+    }
 }
 }
