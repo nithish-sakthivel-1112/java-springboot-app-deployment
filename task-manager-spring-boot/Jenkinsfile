@@ -14,7 +14,6 @@ stages {
             sh 'cd task-manager-spring-boot/ && mvn clean package'
         }
     }
-}
     stage('Static Code Analysis'){
         environment {
             SONAR_TOKEN = credentials('SONARQUBE_TOKEN')
@@ -25,4 +24,5 @@ stages {
 
         }
     }
+}
 }
