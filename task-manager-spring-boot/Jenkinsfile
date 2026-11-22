@@ -4,12 +4,13 @@ pipeline {
             image 'abhishekf5/maven-abhishek-docker-agent'
         }
     }
-}
+
 
 stages {
-    stage('checkout') {
+    stage('Checkout') {
         steps {
             sh 'checkout passed'
         }
     }
+}
 }
