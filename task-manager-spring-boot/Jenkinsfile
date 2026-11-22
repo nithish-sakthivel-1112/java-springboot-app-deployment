@@ -1,0 +1,15 @@
+pipeline {
+    agent {
+        docker {
+            image 'abhishekf5/maven-abhishek-docker-agent'
+        }
+    }
+}
+
+stages {
+    stage('checkout') {
+        steps {
+            sh 'checkout passed'
+        }
+    }
+}
