@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3.9-eclipse-temurin-21'
-            args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
+            
         }
     }
 
@@ -11,7 +11,7 @@ stages {
     stage('Build'){
         steps{
             sh 'ls -lsh'
-            sh 'cd task-manager-spring-boot/ && mvn clean package'
+            sh 'cd task-manager-spring-boot/ && mvn -Dmaven.repo.local="$WORKSPACE/.m2/repository" clean package'
         }
     }
     stage('Static Code Analysis'){
