@@ -15,4 +15,14 @@ stages {
         }
     }
 }
+    stage('Static Code Analysis'){
+        environment {
+            SONAR_TOKEN = credentials('SONARQUBE_TOKEN')
+            SONAR_HOST_URL = 'http://34.229.61.136:9000/'
+        }
+        steps{
+            sh 'cd task-manager-spring-boot/ && mvn sonar:sonar -Dsonar.projectKey=task-manager-spring-boot -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN'
+
+        }
+    }
 }
