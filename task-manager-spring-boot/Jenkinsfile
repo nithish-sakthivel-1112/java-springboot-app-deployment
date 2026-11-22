@@ -21,7 +21,7 @@ stages {
             SONAR_HOST_URL = 'http://34.229.61.136:9000/'
         }
         steps{
-            sh 'cd task-manager-spring-boot/ && mvn sonar:sonar -Dsonar.projectKey=task-manager-spring-boot -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN'
+            sh 'cd task-manager-spring-boot/ && mvn sonar:sonar -Dsonar.projectKey=task-manager-spring-boot -Dmaven.repo.local="$WORKSPACE/.m2/repository -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN'
 
         }
     }
